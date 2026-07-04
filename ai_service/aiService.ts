@@ -36,7 +36,7 @@ async function generateContentWithFallback(
   try {
     return await ai.models.generateContent(params);
   } catch (error: any) {
-    const errorStr = typeof error === 'object' ? JSON.stringify(error) : String(error);
+    const errorStr = error instanceof Error ? error.message : (typeof error === 'object' && error !== null ? JSON.stringify(error) : String(error));
     const isServiceUnavailable = 
       errorStr.includes('503') || 
       errorStr.includes('UNAVAILABLE') || 
