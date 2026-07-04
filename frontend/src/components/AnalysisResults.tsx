@@ -46,12 +46,12 @@ export default function AnalysisResults({
     }
 
     const heading = `${analysis.documentType}.`;
-    const explanation = `Explanation. ${analysis.simpleExplanation}`;
+    const explanation = `${t.whatDoesThisMean}. ${analysis.simpleExplanation}`;
     const timeline = analysis.whenAndWhere.required 
-      ? `Important date: ${analysis.whenAndWhere.when} at ${analysis.whenAndWhere.where}.` 
-      : 'No mandatory court appearance detected.';
+      ? `${t.whenAndWhere}. ${t.timelineWhen}: ${analysis.whenAndWhere.when}. ${t.timelineWhere}: ${analysis.whenAndWhere.where}.` 
+      : `${t.noAppearance}`;
     const warnings = analysis.redFlags.length > 0 
-      ? `Important warning alert: ${analysis.redFlags.join('. ')}` 
+      ? `${t.redFlagsLabel}: ${analysis.redFlags.join('. ')}` 
       : '';
 
     const speechStream = `${heading} ${explanation} ${timeline} ${warnings}`
