@@ -1,0 +1,6 @@
+{
+  "name": "Path to Rights",
+  "description": "Easy multilingual legal document translator, analyzer, and local advisor for rural and marginalized communities in India.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

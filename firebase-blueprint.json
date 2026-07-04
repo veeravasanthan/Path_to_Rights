@@ -1,0 +1,41 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Authenticated user profile",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Owner Auth UID" },
+        "email": { "type": "string", "description": "User email address" },
+        "displayName": { "type": "string", "description": "User visible name" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Timestamp when registered" }
+      },
+      "required": ["userId", "email"]
+    },
+    "Summary": {
+      "title": "Summary",
+      "description": "Legal document analysis saved by a user",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Document analysis ID" },
+        "userId": { "type": "string", "description": "Owner user UID" },
+        "timestamp": { "type": "string", "description": "Display format date string" },
+        "documentType": { "type": "string", "description": "Analyzed document type" },
+        "language": { "type": "object", "description": "Language used for summary" },
+        "analysis": { "type": "object", "description": "Full Analysis Response JSON object" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Server creation timestamp" }
+      },
+      "required": ["id", "userId", "documentType", "analysis"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "User",
+      "description": "User accounts"
+    },
+    "users/{userId}/summaries/{summaryId}": {
+      "schema": "Summary",
+      "description": "Saved past legal summaries nested under user documents"
+    }
+  }
+}
